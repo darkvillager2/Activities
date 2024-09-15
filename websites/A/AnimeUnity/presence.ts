@@ -88,7 +88,8 @@ presence.on("UpdateData", async () => {
 			: Assets.Logo;
 
 		if (!isNaN(duration) && !paused)
-			[, presenceData.endTimestamp] = presence.getTimestamps(current, duration);
+			[presenceData.startTimestamp, presenceData.endTimestamp] =
+				presence.getTimestamps(current, duration);
 	}
 	presence.setActivity(presenceData);
 });

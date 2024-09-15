@@ -209,7 +209,8 @@ presence.on("UpdateData", async () => {
 				.querySelector<HTMLElement>(".VideoPlayer > div")
 				.className.includes("vjs-playing")
 		)
-			[, presenceData.endTimestamp] = presence.getTimestampsfromMedia(video);
+			[presenceData.startTimestamp, presenceData.endTimestamp] =
+				presence.getTimestampsfromMedia(video);
 	} else if (pathname.includes("/cursos/")) {
 		//NEW UI, SAME PRESENCE /CLASES/
 		if (pathNameSplit.length >= 2) {

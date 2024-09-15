@@ -111,10 +111,11 @@ presence.on("UpdateData", async () => {
 						showTitleTag.length
 				  )
 				: showTitleTag;
-			[, presenceData.endTimestamp] = presence.getTimestamps(
-				Math.floor(video.currentTime),
-				Math.floor(video.duration)
-			);
+			[presenceData.startTimestamp, presenceData.endTimestamp] =
+				presence.getTimestamps(
+					Math.floor(video.currentTime),
+					Math.floor(video.duration)
+				);
 			presenceData.buttons = [
 				{ label: (await strings).buttonWatchVideo, url: prevUrl },
 			];

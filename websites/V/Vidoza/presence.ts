@@ -31,7 +31,8 @@ presence.on("UpdateData", async () => {
 
 		if (!isNaN(video?.duration)) {
 			if (!video.paused)
-				[, presenceData.endTimestamp] = presence.getTimestampsfromMedia(video);
+				[presenceData.startTimestamp, presenceData.endTimestamp] =
+					presence.getTimestampsfromMedia(video);
 			presenceData.smallImageKey = video.paused ? Assets.Pause : Assets.Play;
 			presenceData.smallImageText = video.paused
 				? (await strings).pause

@@ -22,11 +22,8 @@ presence.on("UpdateData", async () => {
 					document.querySelector(".jw-text-duration").textContent
 				);
 
-			presenceData.startTimestamp = presence.getTimestamps(
-				elapsed,
-				duration
-			)[0];
-			presenceData.endTimestamp = presence.getTimestamps(elapsed, duration)[1];
+			[presenceData.startTimestamp, presenceData.endTimestamp] =
+				presence.getTimestamps(elapsed, duration);
 
 			presenceData.smallImageKey = Assets.Play;
 			presenceData.smallImageText = "Playing";
