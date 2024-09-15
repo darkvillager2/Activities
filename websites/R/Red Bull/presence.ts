@@ -107,10 +107,9 @@ presence.on("UpdateData", async () => {
 		if (subheading) presenceData.state = subheading.textContent;
 
 		if (video) {
-			if (!live) {
-[presenceData.startTimestamp, presenceData.endTimestamp] =
+			if (!live)
+				[presenceData.startTimestamp, presenceData.endTimestamp] =
 					presence.getTimestampsfromMedia(video);
-}
 			presenceData.smallImageText = presenceData.smallImageKey = live
 				? Assets.Live
 				: video.paused

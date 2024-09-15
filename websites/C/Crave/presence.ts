@@ -14,14 +14,16 @@ presence.on("UpdateData", async () => {
 		// if contains video
 		if (document.querySelector(".jw-icon-playback").ariaLabel !== "Play") {
 			// video is playing
-			
+
+			const elapsed = presence.timestampFromFormat(
+					document.querySelector(".jw-text-elapsed").textContent
+				),
+				duration = presence.timestampFromFormat(
+					document.querySelector(".jw-text-duration").textContent
+				);
 
 			[presenceData.startTimestamp, presenceData.endTimestamp] =
-				presence.getTimestamps(presence.timestampFromFormat(
-					document.querySelector(".jw-text-elapsed").textContent
-				), presence.timestampFromFormat(
-					document.querySelector(".jw-text-duration").textContent
-				));
+				presence.getTimestamps(elapsed, duration);
 
 			presenceData.smallImageKey = Assets.Play;
 			presenceData.smallImageText = "Playing";
