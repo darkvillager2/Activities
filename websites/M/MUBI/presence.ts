@@ -168,7 +168,8 @@ presence.on("UpdateData", async () => {
 						?.textContent?.split("|")[0] ??
 					document.querySelector("title")?.textContent?.split("|")[0];
 				if (video.duration && !video.paused)
-					presenceData.endTimestamp = presence.getTimestampsfromMedia(video)[1];
+					[presenceData.startTimestamp, presenceData.endTimestamp] =
+						presence.getTimestampsfromMedia(video);
 				presenceData.largeImageKey =
 					document
 						.querySelector("#__NEXT_DATA__")

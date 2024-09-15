@@ -76,7 +76,11 @@ export function handleStation(
 
 					if (startTS) presenceData.startTimestamp = tDiffInMS(startTS);
 					if (startTS && endTS)
-						presenceData.endTimestamp = tDiffInMS(startTS, endTS);
+						[presenceData.startTimestamp, presenceData.endTimestamp] =
+							presence.getTimestamps(
+								presence.timestampFromFormat(startTS),
+								presence.timestampFromFormat(endTS)
+							);
 				}
 			}
 			break;

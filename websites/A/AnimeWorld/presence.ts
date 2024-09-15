@@ -413,11 +413,13 @@ presence.on("UpdateData", async () => {
 						presenceData.smallImageKey = paused ? Assets.Pause : Assets.Play;
 						presenceData.smallImageText = `${animename}｜Episodio: ${animenumber}`;
 						presenceData.details = `Guardando: ${animename}`;
-						presenceData.startTimestamp = paused ? null : timestamps[0];
 						presenceData.state = paused
 							? `Ep. ${animenumber}｜In pausa`
 							: `Ep. ${animenumber}｜In riproduzione`;
-						presenceData.endTimestamp = paused ? null : timestamps[1];
+						if (!paused) {
+							[presenceData.startTimestamp, presenceData.endTimestamp] =
+								timestamps;
+						}
 					}
 				} else {
 					presenceData.smallImageKey = Assets.Viewing;
@@ -460,8 +462,10 @@ presence.on("UpdateData", async () => {
 						presenceData.state = paused
 							? "Film｜In pausa"
 							: "Film｜In riproduzione";
-						presenceData.startTimestamp = paused ? null : timestamps[0];
-						presenceData.endTimestamp = paused ? null : timestamps[1];
+						if (!paused) {
+							[presenceData.startTimestamp, presenceData.endTimestamp] =
+								timestamps;
+						}
 					}
 				} else {
 					presenceData.smallImageKey = Assets.Viewing;
@@ -503,11 +507,14 @@ presence.on("UpdateData", async () => {
 						presenceData.smallImageKey = paused ? Assets.Pause : Assets.Play;
 						presenceData.smallImageText = `${oavname}｜${oavnumber}° OAV`;
 						presenceData.details = `Guardando: ${oavname}`;
-						presenceData.startTimestamp = paused ? null : timestamps[0];
+
 						presenceData.state = paused
 							? `${oavnumber}° OAV｜In pausa`
 							: `${oavnumber}° OAV｜In riproduzione`;
-						presenceData.endTimestamp = paused ? null : timestamps[1];
+						if (!paused) {
+							[presenceData.startTimestamp, presenceData.endTimestamp] =
+								timestamps;
+						}
 					}
 				} else {
 					presenceData.smallImageKey = Assets.Viewing;
@@ -553,8 +560,10 @@ presence.on("UpdateData", async () => {
 						presenceData.state = paused
 							? `${onanumber}° ONA｜In pausa`
 							: `${onanumber}° ONA｜In riproduzione`;
-						presenceData.startTimestamp = paused ? null : timestamps[0];
-						presenceData.endTimestamp = paused ? null : timestamps[1];
+						if (!paused) {
+							[presenceData.startTimestamp, presenceData.endTimestamp] =
+								timestamps;
+						}
 					}
 				} else {
 					presenceData.smallImageKey = Assets.Viewing;
@@ -601,8 +610,10 @@ presence.on("UpdateData", async () => {
 						presenceData.state = paused
 							? `${specialnumber}° Special｜In pausa`
 							: `${specialnumber}° Special｜In riproduzione`;
-						presenceData.startTimestamp = paused ? null : timestamps[0];
-						presenceData.endTimestamp = paused ? null : timestamps[1];
+						if (!paused) {
+							[presenceData.startTimestamp, presenceData.endTimestamp] =
+								timestamps;
+						}
 					}
 				} else {
 					presenceData.smallImageKey = Assets.Viewing;
@@ -646,8 +657,10 @@ presence.on("UpdateData", async () => {
 						presenceData.state = paused
 							? "Preview｜In pausa"
 							: "Preview｜In riproduzione";
-						presenceData.startTimestamp = paused ? null : timestamps[0];
-						presenceData.endTimestamp = paused ? null : timestamps[1];
+						if (!paused) {
+							[presenceData.startTimestamp, presenceData.endTimestamp] =
+								timestamps;
+						}
 					}
 				} else {
 					presenceData.smallImageKey = Assets.Viewing;

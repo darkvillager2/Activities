@@ -27,7 +27,8 @@ const presence = new Presence({ clientId: "916438450952097834" }),
 		pause: "general.paused",
 		browsing: "general.browsing",
 	}),
-	videoDetails: VideoDetails = {};
+	videoDetails: VideoDetails = {},
+	browsingTimestamp = Math.floor(Date.now() / 1000);
 
 let fetchingVideoDetails = false;
 
@@ -42,10 +43,6 @@ function capitaliseFirstLetters(str: string): string {
 			);
 		})
 		.join(" ");
-}
-
-function getEpochInSeconds(): number {
-	return Math.floor(Date.now() / 1000);
 }
 
 function parseTimeToSeconds(length: string): number {
@@ -95,7 +92,6 @@ async function setWatchingVideoActivity(
 		document.querySelector(".bmpui-ui-playbacktogglebutton")?.ariaPressed ===
 		"true"
 	) {
-		presenceData.startTimestamp = getEpochInSeconds();
 		presenceData.smallImageKey = Assets.Play;
 		presenceData.smallImageText =
 			videoMetadata.contentSubtype === "LIVE"
@@ -108,10 +104,12 @@ async function setWatchingVideoActivity(
 			.querySelectorAll(".bmpui-ui-playbacktimelabel");
 
 		if (videoMetadata.duration && currentTime) {
-			presenceData.endTimestamp =
-				getEpochInSeconds() +
-				(videoMetadata.duration - parseTimeToSeconds(currentTime.textContent));
-		}
+			[presenceData.startTimestamp, presenceData.endTimestamp] =
+				presence.getTimestamps(
+					videoMetadata.duration,
+					Number(currentTime?.textContent)
+				);
+		} else presenceData.startTimestamp = browsingTimestamp;
 	} else {
 		delete presenceData.startTimestamp;
 		delete presenceData.endTimestamp;
@@ -126,7 +124,7 @@ async function setBrowsingActivity(presenceData: PresenceData) {
 	delete presenceData.endTimestamp;
 
 	presenceData.details = "Browsing...";
-	presenceData.startTimestamp = getEpochInSeconds();
+	presenceData.startTimestamp = browingTimestamp;
 	presenceData.smallImageKey = Assets.Search;
 	presenceData.smallImageText = (await strings).browsing;
 }

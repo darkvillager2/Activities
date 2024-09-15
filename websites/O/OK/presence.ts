@@ -105,10 +105,11 @@ presence.on("UpdateData", async () => {
 		}
 
 		if (timeMusic && playMusic) {
-			const startedAt = Date.now() - getMillisecondsFromString(timeMusic[0]);
-			presenceData.startTimestamp = startedAt;
-			presenceData.endTimestamp =
-				startedAt + getMillisecondsFromString(timeMusic[1]);
+			[presenceData.startTimestamp, presenceData.endTimestamp] =
+				presence.getTimestamps(
+					presence.timestampFromFormat(timeMusic[0]),
+					presence.timestampFromFormat(timeMusic[1])
+				);
 		}
 	}
 

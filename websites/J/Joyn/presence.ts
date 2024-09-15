@@ -131,11 +131,8 @@ presence.on("UpdateData", async function () {
 						presenceData.state = "Movie";
 						if (!video.paused) {
 							if (setting.timeRemaining) {
-								presenceData.startTimestamp = videoStartTime;
-								presenceData.endTimestamp =
-									Math.floor(videoStartTime / 1000) -
-									video.currentTime +
-									video.duration;
+								[presenceData.startTimestamp, presenceData.endTimestamp] =
+									presence.getTimestampsfromMedia(video);
 							}
 							presenceData.smallImageKey = Assets.Play;
 							presenceData.smallImageText = strings.play;
@@ -158,11 +155,8 @@ presence.on("UpdateData", async function () {
 						presenceData.state = "Series";
 						if (!video.paused) {
 							if (setting.timeRemaining) {
-								presenceData.startTimestamp = videoStartTime;
-								presenceData.endTimestamp =
-									Math.floor(videoStartTime / 1000) -
-									video.currentTime +
-									video.duration;
+								[presenceData.startTimestamp, presenceData.endTimestamp] =
+									presence.getTimestampsfromMedia(video);
 							}
 							presenceData.smallImageKey = Assets.Play;
 							presenceData.smallImageText = strings.play;
@@ -185,11 +179,8 @@ presence.on("UpdateData", async function () {
 						presenceData.state = "Trailer";
 						if (!video.paused) {
 							if (setting.timeRemaining) {
-								presenceData.startTimestamp = videoStartTime;
-								presenceData.endTimestamp =
-									Math.floor(videoStartTime / 1000) -
-									video.currentTime +
-									video.duration;
+								[presenceData.startTimestamp, presenceData.endTimestamp] =
+									presence.getTimestampsfromMedia(video);
 							}
 							presenceData.smallImageKey = Assets.Play;
 							presenceData.smallImageText = strings.play;
@@ -220,11 +211,8 @@ presence.on("UpdateData", async function () {
 						presenceData.state = "Compilation";
 						if (!video.paused) {
 							if (setting.timeRemaining) {
-								presenceData.startTimestamp = videoStartTime;
-								presenceData.endTimestamp =
-									Math.floor(videoStartTime / 1000) -
-									video.currentTime +
-									video.duration;
+								[presenceData.startTimestamp, presenceData.endTimestamp] =
+									presence.getTimestampsfromMedia(video);
 							}
 							presenceData.smallImageKey = Assets.Play;
 							presenceData.smallImageText = strings.play;
@@ -248,11 +236,8 @@ presence.on("UpdateData", async function () {
 						presenceData.state = "Sport";
 						if (!video.paused) {
 							if (setting.timeRemaining) {
-								presenceData.startTimestamp = Date.now();
-								presenceData.endTimestamp =
-									Math.floor(Date.now() / 1000) -
-									video.currentTime +
-									video.duration;
+								[presenceData.startTimestamp, presenceData.endTimestamp] =
+									presence.getTimestampsfromMedia(video);
 							}
 							presenceData.smallImageKey = Assets.Play;
 							presenceData.smallImageText = strings.play;
