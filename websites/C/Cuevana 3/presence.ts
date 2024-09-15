@@ -39,7 +39,7 @@ function fullURL(cover: string, hostname: string) {
 	else return Assets.Logo;
 }
 
-let iFrameVideo: boolean, videoPaused: boolean, endTimestamp: number;
+let iFrameVideo: boolean, videoPaused: boolean, timestamps: [number, number];
 
 presence.on(
 	"iFrameData",
@@ -50,7 +50,7 @@ presence.on(
 		paused: boolean;
 	}) => {
 		({ iFrameVideo } = data);
-		[, endTimestamp] = presence.getTimestamps(data.currentTime, data.duration);
+		timestamps = presence.getTimestamps(data.currentTime, data.duration);
 		videoPaused = data.paused;
 	}
 );
@@ -127,8 +127,7 @@ presence.on("UpdateData", async () => {
 					? strings.pause
 					: strings.play;
 				if (!videoPaused) {
-					[presenceData.startTimestamp, presenceData.endTimestamp] =
-						presence.getTimestampsfromMedia(video);
+					[presenceData.startTimestamp, presenceData.endTimestamp] = timestamps;
 				}
 
 				if (buttons) {

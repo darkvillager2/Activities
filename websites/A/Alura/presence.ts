@@ -89,9 +89,10 @@ presence.on("UpdateData", async () => {
 		presenceData.smallImageText = video.paused ? "Pausado" : "Reproduzindo";
 
 		delete presenceData.startTimestamp;
-		if (!video.paused)
-			[presenceData.startTimestamp, presenceData.endTimestamp] =
+		if (!video.paused) {
+[presenceData.startTimestamp, presenceData.endTimestamp] =
 				presence.getTimestampsfromMedia(video);
+}
 	} else if (document.location.pathname.includes("/dashboard"))
 		presenceData.details = "Vendo a dashboard";
 	else if (document.location.pathname.includes("/formacao")) {
