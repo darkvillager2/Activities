@@ -22,8 +22,10 @@ presence.on("UpdateData", async () => {
 		const video: HTMLVideoElement = document.querySelector("#video-nplayer-1");
 
 		if (!video.paused) {
-			[presenceData.startTimestamp, presenceData.endTimestamp] =
-				presence.getTimestamps(video.currentTime, video.duration);
+			[, presenceData.endTimestamp] = presence.getTimestamps(
+				video.currentTime,
+				video.duration
+			);
 			presenceData.smallImageKey = Assets.Play;
 			presenceData.smallImageText = (await strings).play;
 		} else {

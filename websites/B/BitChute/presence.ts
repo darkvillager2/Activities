@@ -55,8 +55,7 @@ presence.on("UpdateData", async () => {
 			delete presenceData.buttons;
 		}
 		if (time && video && !video.paused) {
-			[presenceData.startTimestamp, presenceData.endTimestamp] =
-				presence.getTimestampsfromMedia(video);
+			[, presenceData.endTimestamp] = presence.getTimestampsfromMedia(video);
 			presenceData.smallImageText = presenceData.smallImageKey = Assets.Play;
 		}
 	} else if (pathname.startsWith("/channel")) {

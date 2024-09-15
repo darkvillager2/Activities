@@ -90,8 +90,10 @@ presence.on("UpdateData", async () => {
 				presenceData.smallImageKey = paused ? Assets.Pause : Assets.Play;
 				presenceData.smallImageText = paused ? "Paused" : "Playing";
 				if (!paused) {
-					[presenceData.startTimestamp, presenceData.endTimestamp] =
-						presence.getTimestamps(currentTime, duration);
+					[, presenceData.endTimestamp] = presence.getTimestamps(
+						currentTime,
+						duration
+					);
 				}
 
 				presenceData.buttons = [{ label: "Watch Cartoon", url: href }];

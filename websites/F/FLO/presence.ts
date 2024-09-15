@@ -20,27 +20,26 @@ presence.on("UpdateData", async () => {
 		const playButton: HTMLButtonElement =
 			player.querySelector("button.icon-player");
 
-		[presenceData.startTimestamp, presenceData.endTimestamp] =
-			presence.getTimestamps(
-				presence.timestampFromFormat(
-					player
-						.querySelector(".time_current")
-						.textContent.replace(
-							player.querySelector(".time_current").querySelector("span.hidden")
-								.textContent,
-							""
-						)
-				),
-				presence.timestampFromFormat(
-					player
-						.querySelector(".time_all")
-						.textContent.replace(
-							player.querySelector(".time_all").querySelector("span.hidden")
-								.textContent,
-							""
-						)
-				)
-			);
+		[, presenceData.endTimestamp] = presence.getTimestamps(
+			presence.timestampFromFormat(
+				player
+					.querySelector(".time_current")
+					.textContent.replace(
+						player.querySelector(".time_current").querySelector("span.hidden")
+							.textContent,
+						""
+					)
+			),
+			presence.timestampFromFormat(
+				player
+					.querySelector(".time_all")
+					.textContent.replace(
+						player.querySelector(".time_all").querySelector("span.hidden")
+							.textContent,
+						""
+					)
+			)
+		);
 		presenceData.details = `${player.querySelector("p.title").textContent} - ${
 			player.querySelector("p.artist").textContent
 		}`;

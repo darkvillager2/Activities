@@ -106,12 +106,11 @@ presence.on("UpdateData", async () => {
 		if (iFrameVideo && !isNaN(duration)) {
 			presenceData.smallImageKey = paused ? Assets.Pause : Assets.Play;
 			presenceData.smallImageText = paused ? "Pausado" : "Reproduciendo";
-			[presenceData.startTimestamp, presenceData.endTimestamp] =
-				presence.getTimestamps(
-					Math.floor(currentTime),
+			[, presenceData.endTimestamp] = presence.getTimestamps(
+				Math.floor(currentTime),
 
-					Math.floor(duration)
-				);
+				Math.floor(duration)
+			);
 
 			presenceData.details = title ?? "Titulo no encontrado.";
 			presenceData.state = paused

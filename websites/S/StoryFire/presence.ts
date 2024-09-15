@@ -27,10 +27,8 @@ presence.on("UpdateData", async () => {
 		).textContent;
 		presenceData.state = document.querySelector(".user-name").textContent;
 		if (!video.paused) {
-			[presenceData.startTimestamp, presenceData.endTimestamp] = [
-				startTimestamp,
-				endTimestamp,
-			];
+			presenceData.startTimestamp = startTimestamp;
+			presenceData.endTimestamp = endTimestamp;
 			presenceData.smallImageKey = Assets.Play;
 			presenceData.smallImageText = (await strings).play;
 		} else {

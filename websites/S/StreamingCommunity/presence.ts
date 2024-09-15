@@ -73,8 +73,7 @@ presence.on("UpdateData", async () => {
 			?.textContent?.replace("- StreamingCommunity", "")
 			?.replace("Watch", "")}`;
 		if (!isNaN(duration) && !paused)
-			[presenceData.startTimestamp, presenceData.endTimestamp] =
-				presence.getTimestamps(current, duration);
+			[, presenceData.endTimestamp] = presence.getTimestamps(current, duration);
 	} else if (pathname.startsWith("/serie-tv"))
 		presenceData.details = `${strings.viewCategory} tv series`;
 	else if (pathname.startsWith("/film"))

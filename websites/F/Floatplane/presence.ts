@@ -249,7 +249,7 @@ presence.on("UpdateData", async () => {
 											?.split("/")
 											.slice(-1)[0] as keyof typeof assets
 									];
-								[presenceData.startTimestamp, presenceData.endTimestamp] =
+								[, presenceData.endTimestamp] =
 									presence.getTimestampsfromMedia(video);
 								presenceData.smallImageKey = video.paused
 									? Assets.Pause

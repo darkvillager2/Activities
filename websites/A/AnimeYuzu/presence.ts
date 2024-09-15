@@ -157,11 +157,10 @@ presence.on("UpdateData", async () => {
 					? (await strings).pause
 					: (await strings).play;
 				if (!video.paused) {
-					[presenceData.startTimestamp, presenceData.endTimestamp] =
-						presence.getTimestamps(
-							Math.floor(video.current),
-							Math.floor(video.duration)
-						);
+					[, presenceData.endTimestamp] = presence.getTimestamps(
+						Math.floor(video.current),
+						Math.floor(video.duration)
+					);
 				}
 				if (buttons) {
 					presenceData.buttons = [
@@ -218,11 +217,10 @@ presence.on("UpdateData", async () => {
 					? (await strings).pause
 					: (await strings).play;
 				if (!video.paused) {
-					[presenceData.startTimestamp, presenceData.endTimestamp] =
-						presence.getTimestamps(
-							Math.floor(video.current),
-							Math.floor(video.duration)
-						);
+					[, presenceData.endTimestamp] = presence.getTimestamps(
+						Math.floor(video.current),
+						Math.floor(video.duration)
+					);
 				}
 				if (buttons) {
 					presenceData.buttons = [

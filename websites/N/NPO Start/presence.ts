@@ -44,8 +44,7 @@ presence.on("UpdateData", async () => {
 			presenceData.buttons = [{ label: "Bekijk Video", url: href }];
 
 			if (!video.paused)
-				[presenceData.startTimestamp, presenceData.endTimestamp] =
-					presence.getTimestampsfromMedia(video);
+				[, presenceData.endTimestamp] = presence.getTimestampsfromMedia(video);
 
 			break;
 		}

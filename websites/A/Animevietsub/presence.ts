@@ -149,11 +149,10 @@ presence.on("UpdateData", async () => {
 			).split(" - ");
 			presenceData.smallImageKey = video.paused ? Assets.Pause : Assets.Play;
 			presenceData.smallImageText = video.paused ? strings.pause : strings.play;
-			[presenceData.startTimestamp, presenceData.endTimestamp] =
-				presence.getTimestamps(
-					Math.floor(video.currentTime),
-					Math.floor(video.duration)
-				);
+			presenceData.endTimestamp = presence.getTimestamps(
+				Math.floor(video.currentTime),
+				Math.floor(video.duration)
+			)[1];
 
 			presenceData.details = `Đang xem: ${titleArrOne} `;
 			presenceData.state = `Tập: ${

@@ -126,10 +126,7 @@ presence.on("UpdateData", async () => {
 				presenceData.smallImageText = videoPaused
 					? strings.pause
 					: strings.play;
-				if (!videoPaused) {
-					[presenceData.startTimestamp, presenceData.endTimestamp] =
-						presence.getTimestampsfromMedia(video);
-				}
+				if (!videoPaused) presenceData.endTimestamp = endTimestamp;
 
 				if (buttons) {
 					presenceData.buttons = isSeries

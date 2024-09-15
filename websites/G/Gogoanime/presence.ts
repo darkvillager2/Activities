@@ -348,8 +348,10 @@ presence.on("UpdateData", async () => {
 			} left`;
 		} else {
 			presenceData.smallImageKey = Assets.Play;
-			[presenceData.startTimestamp, presenceData.endTimestamp] =
-				presence.getTimestamps(currentTime, duration);
+			[, presenceData.endTimestamp] = presence.getTimestamps(
+				currentTime,
+				duration
+			);
 		}
 		presenceData.buttons = [
 			{

@@ -47,15 +47,14 @@ presence.on("UpdateData", async () => {
 		case "/player/fPlayer": {
 			const playBar = document.querySelector("div.fp-ui"),
 				playButton = playBar.querySelector("a.fp-playbtn").textContent;
-			[presenceData.startTimestamp, presenceData.endTimestamp] =
-				presence.getTimestamps(
-					presence.timestampFromFormat(
-						playBar.querySelector("span.fp-elapsed").textContent
-					),
-					presence.timestampFromFormat(
-						playBar.querySelector("span.fp-duration").textContent
-					)
-				);
+			[, presenceData.endTimestamp] = presence.getTimestamps(
+				presence.timestampFromFormat(
+					playBar.querySelector("span.fp-elapsed").textContent
+				),
+				presence.timestampFromFormat(
+					playBar.querySelector("span.fp-duration").textContent
+				)
+			);
 			presenceData.details = `${
 				document.querySelector("strong#SongTitleArea").textContent
 			} - ${
@@ -78,8 +77,10 @@ presence.on("UpdateData", async () => {
 				.querySelector("div.fp-player")
 				.querySelector("video.fp-engine");
 
-			[presenceData.startTimestamp, presenceData.endTimestamp] =
-				presence.getTimestamps(video.currentTime, video.duration);
+			[, presenceData.endTimestamp] = presence.getTimestamps(
+				video.currentTime,
+				video.duration
+			);
 			presenceData.details = `${
 				document.querySelector("h2.videoTitle").textContent
 			}`;

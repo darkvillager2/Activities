@@ -24,8 +24,7 @@ presence.on("UpdateData", async () => {
 					presence.timestampFromFormat(e.textContent)
 				);
 
-				[presenceData.startTimestamp, presenceData.endTimestamp] =
-					presence.getTimestamps(currTS, durTS);
+				[, presenceData.endTimestamp] = presence.getTimestamps(currTS, durTS);
 			}
 		}
 	} else if (
@@ -68,8 +67,7 @@ presence.on("UpdateData", async () => {
 					const [timeTS, durTS] = [time, duration].map(e =>
 						presence.timestampFromFormat(e.textContent)
 					);
-					[presenceData.startTimestamp, presenceData.endTimestamp] =
-						presence.getTimestamps(timeTS, durTS);
+					[, presenceData.endTimestamp] = presence.getTimestamps(timeTS, durTS);
 				}
 			}
 			if (buttons) {
@@ -108,8 +106,7 @@ presence.on("UpdateData", async () => {
 				const [timeTS, durTS] = [time, duration].map(e =>
 					presence.timestampFromFormat(e.textContent)
 				);
-				[presenceData.startTimestamp, presenceData.endTimestamp] =
-					presence.getTimestamps(timeTS, durTS);
+				[, presenceData.endTimestamp] = presence.getTimestamps(timeTS, durTS);
 			}
 		}
 		if (buttons) {

@@ -9,7 +9,7 @@ presence.on("UpdateData", async () => {
 				"https://cdn.rcd.gg/PreMiD/websites/0-9/10fastfingers/assets/logo.png",
 			startTimestamp: browsingTimestamp,
 		},
-		[start, end] = presence.getTimestamps(
+		[, end] = presence.getTimestamps(
 			presence.timestampFromFormat("00:00"),
 			presence.timestampFromFormat("1:00")
 		);
@@ -26,7 +26,7 @@ presence.on("UpdateData", async () => {
 				document.querySelector("#switch-typing-test-language").textContent
 			} | ${document.querySelector("#wpm").textContent.split("(")[0]} `;
 		} else {
-			[presenceData.startTimestamp, presenceData.endTimestamp] = [start, end];
+			presenceData.endTimestamp = end;
 			presenceData.details = "Doing a typing test:";
 			presenceData.state = `In ${
 				document.querySelector("#switch-typing-test-language").textContent

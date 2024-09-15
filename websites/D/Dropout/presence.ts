@@ -173,8 +173,10 @@ function getVideoDetails(
 function setTimestamps(presenceData: PresenceData): void {
 	delete presenceData.startTimestamp;
 	if (!paused) {
-		[presenceData.startTimestamp, presenceData.endTimestamp] =
-			presence.getTimestamps(currentTime, duration);
+		presenceData.endTimestamp = presence.getTimestamps(
+			currentTime,
+			duration
+		)[1];
 	}
 	presenceData.smallImageKey = paused ? Assets.Pause : Assets.Play;
 }

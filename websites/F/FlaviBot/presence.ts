@@ -89,15 +89,14 @@ presence.on("UpdateData", async () => {
 				presenceData.smallImageKey = isPlaying ? Assets.Play : Assets.Pause;
 				presenceData.smallImageText = isPlaying ? "Playing" : "Paused";
 				if (isPlaying) {
-					[presenceData.startTimestamp, presenceData.endTimestamp] =
-						presence.getTimestamps(
-							presence.timestampFromFormat(
-								document.querySelector(".time.t-left")?.textContent
-							),
-							presence.timestampFromFormat(
-								document.querySelector(".time.t-right")?.textContent
-							)
-						);
+					[, presenceData.endTimestamp] = presence.getTimestamps(
+						presence.timestampFromFormat(
+							document.querySelector(".time.t-left")?.textContent
+						),
+						presence.timestampFromFormat(
+							document.querySelector(".time.t-right")?.textContent
+						)
+					);
 				}
 			}
 			break;

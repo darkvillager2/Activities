@@ -120,17 +120,16 @@ presence.on("UpdateData", async () => {
 			presenceData.largeImageKey = thumbnail;
 			presenceData.smallImageKey = playing ? Assets.Play : Assets.Pause;
 			if (playing) {
-				[presenceData.startTimestamp, presenceData.endTimestamp] =
-					presence.getTimestamps(
-						presence.timestampFromFormat(
-							document.querySelector(".player-mobile-time-current-text")
-								?.textContent ?? "00:00"
-						),
-						presence.timestampFromFormat(
-							document.querySelector(".player-mobile-time-total-text")
-								?.textContent ?? "00:00"
-						)
-					);
+				[, presenceData.endTimestamp] = presence.getTimestamps(
+					presence.timestampFromFormat(
+						document.querySelector(".player-mobile-time-current-text")
+							?.textContent ?? "00:00"
+					),
+					presence.timestampFromFormat(
+						document.querySelector(".player-mobile-time-total-text")
+							?.textContent ?? "00:00"
+					)
+				);
 			}
 		}
 		// Studio

@@ -50,8 +50,7 @@ presence.on("UpdateData", async () => {
 		presenceData.smallImageKey = video.paused ? Assets.Pause : Assets.Play;
 		presenceData.smallImageText = video.paused ? "Paused" : "Playing";
 
-		[presenceData.startTimestamp, presenceData.endTimestamp] =
-			presence.getTimestampsfromMedia(video);
+		[, presenceData.endTimestamp] = presence.getTimestampsfromMedia(video);
 
 		presenceData.buttons = [
 			{
@@ -77,8 +76,7 @@ presence.on("UpdateData", async () => {
 		presenceData.smallImageKey = video.paused ? Assets.Pause : Assets.Play;
 		presenceData.smallImageText = video.paused ? "Paused" : "Playing";
 
-		[presenceData.startTimestamp, presenceData.endTimestamp] =
-			presence.getTimestampsfromMedia(video);
+		[, presenceData.endTimestamp] = presence.getTimestampsfromMedia(video);
 
 		if (isSeries) {
 			presenceData.state = `${findElement(

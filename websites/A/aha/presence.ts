@@ -15,11 +15,12 @@ const getVideoStatus = (
 			presenceData.smallImageText = "paused";
 			delete presenceData.startTimestamp;
 		} else {
-			[presenceData.startTimestamp, presenceData.endTimestamp] =
-				presence.getTimestamps(
-					Math.floor(video.currentTime),
-					Math.floor(video.duration)
-				);
+			const [startTimestamp, endTimestamp] = presence.getTimestamps(
+				Math.floor(video.currentTime),
+				Math.floor(video.duration)
+			);
+			presenceData.startTimestamp = startTimestamp;
+			presenceData.endTimestamp = endTimestamp;
 			presenceData.smallImageKey = Assets.Play;
 			presenceData.smallImageText = "playing";
 		}

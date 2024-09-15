@@ -554,11 +554,10 @@ const enum Assets {
 							presenceData.smallImageKey = Assets.Play;
 							presenceData.smallImageText = "TMTube Archive — Playing";
 							const video: HTMLVideoElement = document.querySelector("video");
-							[presenceData.startTimestamp, presenceData.endTimestamp] =
-								getTimestamps(
-									Math.floor(video.currentTime),
-									Math.floor(video.duration)
-								);
+							[, presenceData.endTimestamp] = getTimestamps(
+								Math.floor(video.currentTime),
+								Math.floor(video.duration)
+							);
 						} else {
 							presenceData.smallImageKey = Assets.Pause;
 							presenceData.smallImageText = "TMTube Archive — Paused";

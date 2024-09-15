@@ -161,8 +161,9 @@ presence.on("UpdateData", async () => {
 
 					if (video.paused) dontShowTmp = true;
 					else {
-						[presenceData.startTimestamp, presenceData.endTimestamp] =
-							presence.getTimestampsfromMedia(video);
+						presenceData.endTimestamp = presence
+							.getTimestampsfromMedia(video)
+							.pop();
 					}
 
 					presenceData.buttons = [
@@ -217,7 +218,7 @@ presence.on("UpdateData", async () => {
 							?.querySelector('[class="xt0psk2"]')?.textContent ?? "Unknown"
 					}`;
 					if (!playingVid.paused) {
-						[presenceData.startTimestamp, presenceData.endTimestamp] =
+						[, presenceData.endTimestamp] =
 							presence.getTimestampsfromMedia(playingVid);
 					}
 					presenceData.buttons = [
@@ -275,8 +276,9 @@ presence.on("UpdateData", async () => {
 								?.querySelector('a[aria-label*=" "]')
 								?.getAttribute("aria-label")}`;
 							if (!cached.element.paused) {
-								[presenceData.startTimestamp, presenceData.endTimestamp] =
-									presence.getTimestampsfromMedia(cached.element);
+								[, presenceData.endTimestamp] = presence.getTimestampsfromMedia(
+									cached.element
+								);
 							}
 							presenceData.buttons = [
 								{

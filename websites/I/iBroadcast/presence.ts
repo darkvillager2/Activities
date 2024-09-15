@@ -38,11 +38,10 @@ presence.on("UpdateData", async () => {
 				presenceData.smallImageText = "Listening";
 			}
 			if (currentTime && duration) {
-				[presenceData.startTimestamp, presenceData.endTimestamp] =
-					presence.getTimestamps(
-						presence.timestampFromFormat(currentTime.textContent),
-						presence.timestampFromFormat(duration.textContent)
-					);
+				[, presenceData.endTimestamp] = presence.getTimestamps(
+					presence.timestampFromFormat(currentTime.textContent),
+					presence.timestampFromFormat(duration.textContent)
+				);
 			}
 		} else if (playlist) {
 			presenceData.details = "Looking at a playlist";

@@ -86,17 +86,18 @@ presence.on("UpdateData", async () => {
 			},
 		];
 		if (iFrameVideo) {
-			[presenceData.startTimestamp, presenceData.endTimestamp] =
-				presence.getTimestamps(Math.floor(currentTime), Math.floor(duration));
+			[, presenceData.endTimestamp] = presence.getTimestamps(
+				Math.floor(currentTime),
+				Math.floor(duration)
+			);
 		} else {
 			video = document.querySelector("div > div.plyr__video-wrapper > video");
 			if (video) {
 				({ currentTime, duration, paused } = video),
-					([presenceData.startTimestamp, presenceData.endTimestamp] =
-						presence.getTimestamps(
-							Math.floor(currentTime),
-							Math.floor(duration)
-						));
+					([, presenceData.endTimestamp] = presence.getTimestamps(
+						Math.floor(currentTime),
+						Math.floor(duration)
+					));
 			}
 		}
 

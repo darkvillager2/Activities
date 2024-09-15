@@ -88,10 +88,8 @@ presence.on("UpdateData", async () => {
 				time,
 				time2
 			);
-			[presenceData.startTimestamp, presenceData.endTimestamp] = [
-				startTimestamp,
-				endTimestamp,
-			];
+			presenceData.startTimestamp = startTimestamp;
+			presenceData.endTimestamp = endTimestamp;
 			presenceData.smallImageKey = Assets.Play;
 			presenceData.smallImageText = "Playing";
 
@@ -174,8 +172,9 @@ presence.on("UpdateData", async () => {
 		min2 = min2 * 60;
 		time2 = min2 + sec2;
 
-		[presenceData.startTimestamp, presenceData.endTimestamp] =
-			presence.getTimestamps(Math.floor(time), Math.floor(time2));
+		const [startTimestamp, endTimestamp] = presence.getTimestamps(time, time2);
+		presenceData.startTimestamp = startTimestamp;
+		presenceData.endTimestamp = endTimestamp;
 		presenceData.smallImageKey = Assets.Play;
 		presenceData.smallImageText = "Playing";
 		if (cover) {
@@ -242,8 +241,9 @@ presence.on("UpdateData", async () => {
 		min2 = min2 * 60;
 		time2 = min2 + sec2;
 
-		[presenceData.startTimestamp, presenceData.endTimestamp] =
-			presence.getTimestamps(Math.floor(time), Math.floor(time2));
+		const [startTimestamp, endTimestamp] = presence.getTimestamps(time, time2);
+		presenceData.startTimestamp = startTimestamp;
+		presenceData.endTimestamp = endTimestamp;
 		presenceData.smallImageKey = Assets.Play;
 		presenceData.smallImageText = "Playing";
 		if (cover) {

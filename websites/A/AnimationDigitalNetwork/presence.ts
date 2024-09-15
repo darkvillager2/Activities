@@ -33,8 +33,7 @@ presence.on("UpdateData", async () => {
 			presenceData.smallImageText = video.paused
 				? (await strings).pause
 				: (await strings).play;
-			[presenceData.startTimestamp, presenceData.endTimestamp] =
-				presence.getTimestampsfromMedia(video);
+			[, presenceData.endTimestamp] = presence.getTimestampsfromMedia(video);
 
 			presenceData.buttons = [
 				{

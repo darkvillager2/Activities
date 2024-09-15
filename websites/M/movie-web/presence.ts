@@ -108,8 +108,9 @@ presence.on("UpdateData", async () => {
 				"https://cdn.rcd.gg/PreMiD/websites/M/movie-web/assets/0.gif";
 			presenceData.smallImageText = "Loading";
 		} else if (controls.isPlaying) {
-			[presenceData.startTimestamp, presenceData.endTimestamp] =
-				presence.getTimestampsfromMedia(document.querySelector("video"));
+			[, presenceData.endTimestamp] = presence.getTimestampsfromMedia(
+				document.querySelector("video")
+			);
 			presenceData.smallImageKey = Assets.Play;
 			presenceData.smallImageText = "Playing";
 		} else {

@@ -92,11 +92,10 @@ presence.on("UpdateData", async () => {
 			: (await strings).playing;
 
 		if (!video.paused && video.duration) {
-			[presenceData.startTimestamp, presenceData.endTimestamp] =
-				presence.getTimestamps(
-					Math.floor(video.currentTime),
-					Math.floor(video.duration)
-				);
+			[, presenceData.endTimestamp] = presence.getTimestamps(
+				Math.floor(video.currentTime),
+				Math.floor(video.duration)
+			);
 		}
 	}
 

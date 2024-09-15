@@ -61,8 +61,10 @@ presence.on("UpdateData", async () => {
 				.split("/")
 				.map(time => presence.timestampFromFormat(time));
 
-			[presenceData.startTimestamp, presenceData.endTimestamp] =
-				presence.getTimestamps(currentTime, duration);
+			[, presenceData.endTimestamp] = presence.getTimestamps(
+				currentTime,
+				duration
+			);
 		}
 	}
 

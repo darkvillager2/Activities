@@ -96,10 +96,8 @@ presence.on("UpdateData", async () => {
 							videoData.currentTime,
 							videoData.duration
 						);
-						[presenceData.startTimestamp, presenceData.endTimestamp] = [
-							startTimestamp,
-							endTimestamp,
-						];
+						presenceData.startTimestamp = startTimestamp;
+						presenceData.endTimestamp = endTimestamp;
 					}
 				}
 			} else presenceData.details = "Anime Nézése";

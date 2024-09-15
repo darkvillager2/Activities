@@ -119,8 +119,8 @@ presence.on("UpdateData", async () => {
 						document.querySelector<HTMLVideoElement>("video");
 					delete presenceData.startTimestamp;
 					if (!paused) {
-						[presenceData.startTimestamp, presenceData.endTimestamp] =
-							presence.getTimestamps(currentTime, duration);
+						presenceData.endTimestamp =
+							Date.now() / 1000 + duration - currentTime;
 					}
 					presenceData.smallImageKey = paused ? Assets.Pause : Assets.Play;
 					presenceData.smallImageText = paused

@@ -43,10 +43,8 @@ presence.on("UpdateData", () => {
 		presenceData.startTimestamp = Math.floor(Date.now() / 1000);
 	} else if (document.location.pathname.includes("/episodes/")) {
 		if (!isNaN(endTimestamp)) {
-			[presenceData.startTimestamp, presenceData.endTimestamp] = [
-				startTimestamp,
-				endTimestamp,
-			];
+			presenceData.startTimestamp = startTimestamp;
+			presenceData.endTimestamp = endTimestamp;
 		}
 
 		presenceData.state =

@@ -205,10 +205,8 @@ presence.on("UpdateData", async () => {
 				video.currentTime,
 				video.duration
 			);
-			[presenceData.startTimestamp, presenceData.endTimestamp] = [
-				startTimestamp,
-				endTimestamp,
-			];
+			presenceData.startTimestamp = startTimestamp;
+			presenceData.endTimestamp = endTimestamp;
 		}
 	};
 

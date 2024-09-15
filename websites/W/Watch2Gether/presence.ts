@@ -50,11 +50,10 @@ presence.on("UpdateData", async () => {
 					"div.w2g-player-menu.w2g-player > div.ui.inverted.tiny.menu > a > i.play"
 				)
 			) {
-				[presenceData.startTimestamp, presenceData.endTimestamp] =
-					presence.getTimestamps(
-						presence.timestampFromFormat(playerTime[0].textContent),
-						presence.timestampFromFormat(playerTime[1].textContent)
-					);
+				[, presenceData.endTimestamp] = presence.getTimestamps(
+					presence.timestampFromFormat(playerTime[0].textContent),
+					presence.timestampFromFormat(playerTime[1].textContent)
+				);
 			}
 			if (invite) {
 				presenceData.buttons = [

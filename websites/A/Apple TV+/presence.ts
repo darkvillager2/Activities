@@ -82,7 +82,7 @@ presence.on("UpdateData", async () => {
 			setPresenceData() {
 				if (presence.isWatching()) {
 					const video = presence.getVideo();
-					[presenceData.startTimestamp, presenceData.endTimestamp] =
+					[, presenceData.endTimestamp] =
 						presence.getTimestampsfromMedia(video);
 
 					const title = presence.getTitle(),
@@ -126,7 +126,7 @@ presence.on("UpdateData", async () => {
 			setPresenceData() {
 				if (presence.isWatching()) {
 					const video = presence.getVideo();
-					[presenceData.startTimestamp, presenceData.endTimestamp] =
+					[, presenceData.endTimestamp] =
 						presence.getTimestampsfromMedia(video);
 
 					presenceData.details = presence.getTitle();

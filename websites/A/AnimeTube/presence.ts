@@ -62,8 +62,10 @@ presence.on("UpdateData", async () => {
 				: Assets.Play;
 			presenceData.smallImageText = videoData.paused ? "Pausiert" : "Spielt";
 
-			[presenceData.startTimestamp, presenceData.endTimestamp] =
-				presence.getTimestamps(videoData.currentTime, videoData.duration);
+			[, presenceData.endTimestamp] = presence.getTimestamps(
+				videoData.currentTime,
+				videoData.duration
+			);
 
 			if (videoData.paused) delete presenceData.endTimestamp;
 		}

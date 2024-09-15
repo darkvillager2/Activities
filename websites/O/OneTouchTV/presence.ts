@@ -96,8 +96,10 @@ presence.on("UpdateData", async () => {
 			if (video) {
 				delete presenceData.startTimestamp;
 				if (!video.paused) {
-					[presenceData.startTimestamp, presenceData.endTimestamp] =
-						presence.getTimestamps(video.currentTime, video.duration);
+					[, presenceData.endTimestamp] = presence.getTimestamps(
+						video.currentTime,
+						video.duration
+					);
 				}
 				presenceData.smallImageKey = video.paused ? Assets.Pause : Assets.Play;
 				presenceData.buttons = [{ label: "Watch Video", url: href }];

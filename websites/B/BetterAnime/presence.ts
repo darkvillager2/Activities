@@ -137,8 +137,10 @@ presence.on("UpdateData", async () => {
 					? (await strings).pause
 					: (await strings).play;
 
-				[data.presenceData.startTimestamp, data.presenceData.endTimestamp] =
-					presence.getTimestamps(video.currentTime, video.duration);
+				data.presenceData.endTimestamp = presence.getTimestamps(
+					video.currentTime,
+					video.duration
+				)[1];
 				const seriesURL = document.querySelector<HTMLAnchorElement>(
 					"div.anime-title > h2 > a"
 				)?.href;

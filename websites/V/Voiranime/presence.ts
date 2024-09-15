@@ -82,10 +82,8 @@ presence.on("UpdateData", async () => {
 				presenceData.state = document
 					.querySelector("li.active")
 					.textContent.split("-")[1];
-				[presenceData.startTimestamp, presenceData.endTimestamp] = [
-					startTimestamp,
-					endTimestamp,
-				];
+				presenceData.startTimestamp = startTimestamp;
+				presenceData.endTimestamp = endTimestamp;
 				presenceData.smallImageKey = video.paused ? Assets.Pause : Assets.Play;
 				presenceData.smallImageText = video.paused
 					? strings.pause

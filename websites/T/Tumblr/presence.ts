@@ -35,7 +35,7 @@ presence.on("UpdateData", async () => {
 							: Assets.Play;
 						presenceData.smallImageText = video.paused ? "Paused" : "Playing";
 						if (!video.paused) {
-							[presenceData.startTimestamp, presenceData.endTimestamp] =
+							[, presenceData.endTimestamp] =
 								presence.getTimestampsfromMedia(video);
 						}
 						presenceData.buttons = author

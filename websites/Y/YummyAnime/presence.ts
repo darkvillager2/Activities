@@ -58,10 +58,8 @@ presence.on("UpdateData", async () => {
 			presenceData.smallImageText = paused
 				? (await strings).pause
 				: (await strings).play;
-			[presenceData.startTimestamp, presenceData.endTimestamp] = [
-				startTimestamp,
-				endTimestamp,
-			];
+			presenceData.startTimestamp = startTimestamp;
+			presenceData.endTimestamp = endTimestamp;
 
 			title = document.querySelector(
 				"body > div#main-page > div.content-block.container.clearfix > div.content > div > div.content-page.anime-page > h1"

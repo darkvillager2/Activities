@@ -91,7 +91,7 @@ presence.on("UpdateData", async () => {
 						},
 					];
 					if (!videoElement.paused) {
-						[presenceData.startTimestamp, presenceData.endTimestamp] =
+						[, presenceData.endTimestamp] =
 							presence.getTimestampsfromMedia(videoElement);
 					}
 				} else if (pathname === "/contato.php")
