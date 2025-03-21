@@ -29,5 +29,25 @@
     "tv",
     "movies",
     "anime"
+  ],
+  "settings": [
+    {
+      "id": "buttons",
+      "title": "Show Buttons",
+      "icon": "fas fa-compress-arrows-alt",
+      "value": true
+    },
+    {
+      "id": "displaySearch",
+      "title": "Show Search Query",
+      "icon": "fas fa-search",
+      "value": false
+    },
+    {
+      "id": "cover",
+      "title": "Show Cover",
+      "icon": "fad fa-images",
+      "value": true
+    }
   ]
 }
